@@ -10,5 +10,5 @@ this is just my personal website/blog where I can keep notes, thoughts, and tips
 I'm using [Jekyll](https://github.com/jekyll) to generate this site.
 
 - [Jekyll usage documentation](https://jekyllrb.com/)
-- [Minima theme](https://github.com/jekyll/minima)
+- [Hacker theme](https://github.com/pages-themes/hacker)
 - [Jekyll source](https://github.com/jekyll/jekyll)
