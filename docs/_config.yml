@@ -27,11 +27,17 @@ url: https://davelpz.github.io # the base hostname & protocol for your site, e.g
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: davelpz
 github_username:  davelpz
+show_downloads: false
+author: dML
 
 # Build settings
-theme: minima
+#theme: hacker
+remote_theme: pages-themes/hacker@v0.2.0
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme # add this line to the plugins list if you already have one
+
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
