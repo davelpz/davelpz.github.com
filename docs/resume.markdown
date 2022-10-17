@@ -1,7 +1,7 @@
 ---
 title: Resume
 permalink: /resume
-published: false
+published: true
 ---
 # David Lopez
 
@@ -23,6 +23,10 @@ Senior software engineer with extensive experience in UX (user experience) and U
 **Version control systems:** Git, Mercurial, Subversion, CVS
 
 ## Professional Experience
+### Point & Pay (Oldsmar, FL)
+**Product Engineer, Lead** (February 2020 - Present)
+- Lead engineer for a small development team for a Java based payment processing platform.  Technologies used include Guice, Spring (Spring boot, Spring MVC) and MSSQL.
+
 ### Verizon (Temple Terrace, FL) - IT Division  
 **Principal Member Technical Staff** (September 1997 - March 2019)
 
