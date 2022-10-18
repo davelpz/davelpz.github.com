@@ -1,0 +1,64 @@
+---
+layout: post
+title:  "JavaScript in Jekyll"
+date:   2022-10-18 14:28:59 -0400
+categories: jekyll JavaScript
+author: DL
+---
+
+<h1>Testing JS with PixiJS</h1>
+
+{% highlight JavaScript %}
+let canvas_width = 640;
+let canvas_height = 360;
+
+// Create the application helper and add its render target to the page
+let app = new PIXI.Application({ width: canvas_width, height: canvas_height });
+document.getElementById("pixijs_div").appendChild(app.view);
+
+// Create the sprite and add it to the stage
+let sprite = PIXI.Sprite.from('/assets/images/ship.png');
+let sprite_half_width = 88;
+let sprite_x_center = -192.0;
+let sprite_canvas_x_center = sprite_x_center + (canvas_width/2);
+let x_delta_width = (canvas_width/2) - sprite_half_width;
+
+app.stage.addChild(sprite);
+
+// Add a ticker callback to move the sprite back and forth
+let elapsed = 0.0;
+app.ticker.add((delta) => {
+elapsed += delta;
+sprite.x = sprite_canvas_x_center + Math.cos(elapsed/15.0) * x_delta_width;
+});
+{% endhighlight %}
+
+<div id="pixijs_div" style="margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 40px;margin-inline-end: 40px;"></div>
+
+<script src="https://pixijs.download/release/pixi.js"></script>
+
+<script>
+let canvas_width = 640;
+let canvas_height = 360;
+
+// Create the application helper and add its render target to the page
+let app = new PIXI.Application({ width: canvas_width, height: canvas_height });
+document.getElementById("pixijs_div").appendChild(app.view);
+
+// Create the sprite and add it to the stage
+let sprite = PIXI.Sprite.from('/assets/images/ship.png');
+let sprite_half_width = 88;
+let sprite_x_center = -192.0;
+let sprite_canvas_x_center = sprite_x_center + (canvas_width/2);
+let x_delta_width = (canvas_width/2) - sprite_half_width;
+
+app.stage.addChild(sprite);
+
+// Add a ticker callback to move the sprite back and forth
+let elapsed = 0.0;
+app.ticker.add((delta) => {
+    elapsed += delta;
+    sprite.x = sprite_canvas_x_center + Math.cos(elapsed/15.0) * x_delta_width;
+});
+</script>
+
