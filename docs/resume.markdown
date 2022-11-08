@@ -1,7 +1,7 @@
 ---
 title: Resume
 permalink: /resume
-published: true
+published: false
 ---
 # David Lopez
 
