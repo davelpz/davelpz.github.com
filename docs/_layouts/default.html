@@ -19,9 +19,14 @@
 <header>
 <div class="container">
 <a id="a-title" href="{{ '/' | relative_url }}">
-<h1>{{ site.title | default: site.github.repository_name }}</h1>
+<h1>{{ site.title | default: site.github.repository_name }}
+</h1>
 </a>
-<h2>{{ site.description | default: site.github.project_tagline }}</h2>
+<h2>{{ site.description | default: site.github.project_tagline }}
+<a rel="me" href="https://twit.social/@davelpz">
+<img class="mastodon_icon" src="/assets/images/mastodon_logo.svg"/>
+</a>
+</h2>
 
 <section id="downloads">
 {% if site.show_downloads %}
