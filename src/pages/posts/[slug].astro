@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LayerLineRule from '../../components/LayerLineRule.astro';
+import SpecLine from '../../components/SpecLine.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+  const ascending = [...allPosts].sort(
+    (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+  );
+
+  return ascending.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, number: i + 1 },
+  }));
+}
+
+const { post, number } = Astro.props;
+const { Content } = await render(post);
+const paddedNumber = String(number).padStart(3, '0');
+---
+
+<BaseLayout title={`${post.data.title} — davelpz`} description={post.data.summary}>
+  <article class="post">
+    <p class="build-number">BUILD #{paddedNumber}</p>
+    <h1>{post.data.title}</h1>
+    <SpecLine data={post.data} />
+    <LayerLineRule variant={post.data.type === 'print' ? 'filament' : 'resin'} />
+    <div class="body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding: 1.5rem 0 3rem;
+  }
+
+  .build-number {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-ash);
+    margin: 0 0 0.3rem;
+    letter-spacing: 0.04em;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .body {
+    margin-top: 2rem;
+  }
+
+  .body :global(h2) {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .body :global(p) {
+    margin: 1rem 0;
+  }
+</style>

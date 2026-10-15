@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  data: CollectionEntry<'posts'>['data'];
+}
+
+const { data } = Astro.props;
+---
+
+{data.type === 'print' ? (
+  <p class="spec-line">
+    {data.material} · {data.color} · layer {data.layerHeight} · {data.printTime}
+  </p>
+) : (
+  <p class="spec-line">
+    {data.stack.join(' / ')}
+    {data.repo && (
+      <>
+        {' '}· <a href={data.repo}>{data.repo.replace(/^https?:\/\//, '')}</a>
+      </>
+    )}
+  </p>
+)}
+
+<style>
+  .spec-line {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-ash);
+    margin: 0.5rem 0 0;
+    letter-spacing: 0.01em;
+  }
+
+  .spec-line a {
+    color: var(--color-ash);
+  }
+</style>

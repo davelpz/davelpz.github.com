@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const ascending = [...allPosts].sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+);
+const numbered = ascending.map((post, i) => ({ post, number: i + 1 }));
+const feed = [...numbered].reverse();
+---
+
+<BaseLayout>
+  {feed.length === 0 ? (
+    <p class="empty">No builds logged yet.</p>
+  ) : (
+    feed.map(({ post, number }) => <PostCard post={post} number={number} />)
+  )}
+</BaseLayout>
+
+<style>
+  .empty {
+    color: var(--color-ash);
+    font-family: var(--font-mono);
+    padding: 3rem 0;
+  }
+</style>

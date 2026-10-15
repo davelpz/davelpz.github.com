@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LayerLineRule from '../components/LayerLineRule.astro';
+---
+
+<BaseLayout title="404 — davelpz">
+  <div class="not-found">
+    <p class="build-number">BUILD #404</p>
+    <h1>Print failed.</h1>
+    <p>Nothing's on the bed at this address.</p>
+    <LayerLineRule variant="resin" />
+    <p><a href="/">Back to the feed →</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding: 3rem 0;
+  }
+
+  .build-number {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-ash);
+    margin: 0 0 0.3rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+</style>

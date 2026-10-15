@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import LayerLineRule from './LayerLineRule.astro';
+import SpecLine from './SpecLine.astro';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  number: number;
+}
+
+const { post, number } = Astro.props;
+const paddedNumber = String(number).padStart(3, '0');
+---
+
+<article class="post-card">
+  <p class="build-number">BUILD #{paddedNumber}</p>
+  <h2><a href={`/posts/${post.id}/`}>{post.data.title}</a></h2>
+  <SpecLine data={post.data} />
+  <p class="excerpt">{post.data.summary}</p>
+  <LayerLineRule variant={post.data.type === 'print' ? 'filament' : 'resin'} />
+</article>
+
+<style>
+  .post-card {
+    padding: 2rem 0;
+  }
+
+  .build-number {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-ash);
+    margin: 0 0 0.3rem;
+    letter-spacing: 0.04em;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h2 a {
+    color: var(--color-paper);
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    color: var(--color-filament);
+  }
+
+  .excerpt {
+    color: var(--color-paper);
+    margin: 0.75rem 0 1.5rem;
+  }
+</style>

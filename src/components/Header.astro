@@ -1,0 +1,58 @@
+---
+import LayerLineRule from './LayerLineRule.astro';
+---
+
+<header class="site-header">
+  <div class="measure header-inner">
+    <a class="wordmark" href="/">davelpz</a>
+    <p class="tagline">
+      build logs from the print bed and the terminal
+      <a class="social" rel="me" href="https://twit.social/@davelpz" aria-label="Mastodon">
+        <img src="/mastodon_logo.svg" alt="" width="16" height="16" />
+      </a>
+      <a class="social" href="https://github.com/davelpz" aria-label="GitHub">GitHub</a>
+    </p>
+  </div>
+  <LayerLineRule variant="filament" />
+</header>
+
+<style>
+  .site-header {
+    padding-top: 2.5rem;
+  }
+
+  .header-inner {
+    padding-bottom: 1.25rem;
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-paper);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .tagline {
+    margin: 0.4rem 0 0;
+    color: var(--color-ash);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .social {
+    color: var(--color-ash);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .social img {
+    display: block;
+    filter: invert(0.85) sepia(1) saturate(0) brightness(1.4);
+  }
+</style>

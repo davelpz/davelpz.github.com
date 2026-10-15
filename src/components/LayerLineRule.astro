@@ -1,0 +1,32 @@
+---
+interface Props {
+  variant?: 'filament' | 'resin';
+}
+
+const { variant = 'filament' } = Astro.props;
+---
+
+<div class:list={['layer-line', variant]} role="presentation"></div>
+
+<style>
+  .layer-line {
+    height: 10px;
+    width: 100%;
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--stripe-color) 0,
+      var(--stripe-color) 2px,
+      transparent 2px,
+      transparent 9px
+    );
+    opacity: 0.85;
+  }
+
+  .layer-line.filament {
+    --stripe-color: var(--color-filament);
+  }
+
+  .layer-line.resin {
+    --stripe-color: var(--color-resin);
+  }
+</style>
